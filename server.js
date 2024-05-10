@@ -5,34 +5,35 @@ const colors = require("colors");
 const dotenv = require("dotenv");
 const connectDB = require("./config/db");
 
-//env config
+// Load environment variables
 dotenv.config();
 
-//router import
+// Router imports
 const userRoutes = require("./routes/userRoutes");
 const blogRoutes = require("./routes/blogRoutes");
 
-//mongodb connection
+// Connect to MongoDB
 connectDB();
 
-//rest objecct
+// Create Express app
 const app = express();
 
-//middelwares
+// Middleware
 app.use(cors());
 app.use(express.json());
 app.use(morgan("dev"));
 
-//routes
+// Routes
 app.use("/api/v1/user", userRoutes);
 app.use("/api/v1/blog", blogRoutes);
 
+// Determine the running mode based on NODE_ENV
+const mode = process.env.NODE_ENV || "development";
+
 // Port
 const PORT = process.env.PORT || 8080;
-//listen
+
+// Start the server
 app.listen(PORT, () => {
-  console.log(
-    `Server Running on ${process.env.DEV_MODE} mode port no ${PORT}`.bgCyan
-      .white
-  );
+  console.log(`Server running in ${mode} mode on port ${PORT}`.bgCyan.white);
 });

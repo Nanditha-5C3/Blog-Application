@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const colors = require("colors");
+mongoose.set('strictQuery', false);
 const connectDB = async () => {
   try {
     await mongoose.connect(`mongodb+srv://21501a05c3:Nanditha@cluster0.8upeuao.mongodb.net/crafts`);
