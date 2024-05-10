@@ -26,7 +26,8 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const { data } = await axios.post("/api/v1/user/login", {
+      const backendURL = "https://blog-application-qt4g.onrender.com";
+      const { data } = await axios.post(`${backendURL}/api/v1/user/login`, {
         email: inputs.email,
         password: inputs.password,
       });
@@ -55,7 +56,7 @@ const Login = () => {
           padding={3}
           borderRadius={5}
           sx={{
-            backgroundImage: `url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTyyRGgZ0Fe-yEg3ntysLAh5zAUtK0_PGOZbg&s")`,
+            backgroundImage: `url("https://img.pikbest.com/origin/06/44/60/0pIkbEsTkpIkbEsTVJS.jpg!sw800")`,
             backgroundSize: "cover",
           }}
         >

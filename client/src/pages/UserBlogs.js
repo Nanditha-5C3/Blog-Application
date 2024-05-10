@@ -8,7 +8,8 @@ const UserBlogs = () => {
   const getUserBlogs = async () => {
     try {
       const id = localStorage.getItem("userId");
-      const { data } = await axios.get(`/api/v1/blog/user-blog/${id}`);
+      const backendURL = "https://blog-application-qt4g.onrender.com";
+      const { data } = await axios.get(`${backendURL}/api/v1/blog/user-blog/${id}`);
       if (data?.success) {
         setBlogs(data?.userBlog.blogs);
       }

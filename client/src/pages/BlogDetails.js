@@ -13,7 +13,8 @@ const BlogDetails = () => {
   // Using useCallback to memoize getBlogDetail function
   const getBlogDetail = useCallback(async () => {
     try {
-      const { data } = await axios.get(`/api/v1/blog/get-blog/${id}`);
+      const backendURL = "https://blog-application-qt4g.onrender.com";
+      const { data } = await axios.get(`${backendURL}/api/v1/blog/get-blog/${id}`);
       if (data?.success) {
         setBlog(data?.blog);
         setInputs({
@@ -41,7 +42,8 @@ const BlogDetails = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const { data } = await axios.put(`/api/v1/blog/update-blog/${id}`, {
+      const backendURL = "https://blog-application-qt4g.onrender.com";
+      const { data } = await axios.put(`${backendURL}/api/v1/blog/update-blog/${id}`, {
         title: inputs.title,
         description: inputs.description,
         image: inputs.image,
@@ -71,6 +73,10 @@ const BlogDetails = () => {
           display="flex"
           flexDirection={"column"}
           marginTop="30px"
+          sx={{
+            backgroundImage: `url("https://img.pikbest.com/origin/06/44/60/0pIkbEsTkpIkbEsTVJS.jpg!sw800")`,
+            backgroundSize: "cover",
+          }}
         >
           <Typography
             variant="h2"
@@ -120,7 +126,7 @@ const BlogDetails = () => {
             variant="outlined"
             required
           />
-          <Button type="submit" color="warning" variant="contained">
+          <Button type="submit" color="secondary" variant="contained">
             UPDATE
           </Button>
         </Box>

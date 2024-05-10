@@ -22,7 +22,8 @@ const CreateBlog = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const { data } = await axios.post("/api/v1/blog/create-blog", {
+      const backendURL = "https://blog-application-qt4g.onrender.com";
+      const { data } = await axios.post(`${backendURL}/api/v1/blog/create-blog`, {
         title: inputs.title,
         description: inputs.description,
         image: inputs.image,
@@ -38,20 +39,10 @@ const CreateBlog = () => {
   };
   return (
     <>
-    <div
-      style={{
-        backgroundImage: `url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTyyRGgZ0Fe-yEg3ntysLAh5zAUtK0_PGOZbg&s")`,
-        backgroundSize: "cover",
-        height: "100vh",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-    >
       <form onSubmit={handleSubmit}>
         <Box
-        justifyContent= "center"
-          width={"150%"}
+          justifyContent="center"
+          width={"50%"}
           border={3}
           borderRadius={10}
           padding={3}
@@ -60,6 +51,10 @@ const CreateBlog = () => {
           display="flex"
           flexDirection={"column"}
           marginTop="30px"
+          sx={{
+            backgroundImage: `url("https://img.pikbest.com/origin/06/44/60/0pIkbEsTkpIkbEsTVJS.jpg!sw800")`,
+            backgroundSize: "cover",
+          }}
         >
           <Typography
             variant="h2"
@@ -117,7 +112,6 @@ const CreateBlog = () => {
           </Button>
         </Box>
       </form>
-      </div>
     </>
   );
 };

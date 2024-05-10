@@ -28,7 +28,8 @@ export default function BlogCard({
 
   const handleDelete = async () => {
     try {
-      const { data } = await axios.delete(`/api/v1/blog/delete-blog/${id}`);
+      const backendURL = "https://blog-application-qt4g.onrender.com";
+      const { data } = await axios.delete(`${backendURL}/api/v1/blog/delete-blog/${id}`);
       if (data?.success) {
         alert("Blog Deleted");
         window.location.reload();
@@ -48,6 +49,8 @@ export default function BlogCard({
         ":hover:": {
           boxShadow: "10px 10px 20px #ccc",
         },
+        backgroundImage: `url("https://img.pikbest.com/origin/06/44/60/0pIkbEsTkpIkbEsTVJS.jpg!sw800")`,
+        backgroundSize: "cover",
       }}
     >
       {isUser && (
